@@ -21,10 +21,15 @@
         </div>
     <script type="application/javascript">
         const el = document.getElementById('this');
-        const endDateTime = new Date(1725573600000);
+        // create const that is always 11pm UTC on 5/9/2024
+        const endDateTime = new Date('2024-09-05T22:00:00Z');
         setInterval(() => {
             const now = new Date();
             const diff = endDateTime - now;
+            if (diff < 0) {
+                el.innerHTML = '00:00:00';
+                return;
+            }
             const hours = (Math.floor(diff / 1000 / 60 / 60)).toString().padStart(2, '0');
             const minutes = (Math.floor(diff / 1000 / 60) % 60).toString().padStart(2, '0');
             const seconds = (Math.floor(diff / 1000) % 60).toString().padStart(2, '0');
