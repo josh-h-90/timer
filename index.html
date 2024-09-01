@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>ø</title>
+        <style>
+            body {
+                background: #000;
+                color: #fff;
+                font-family: ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+            }
+            .timer {
+                font-weight: bold;
+                font-size: 14rem;
+                text-align: center;
+                margin-top: 100px;
+                font-variant-numeric: tabular-nums;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="this" class="timer">
+        </div>
+    <script type="application/javascript">
+        const el = document.getElementById('this');
+        const endDateTime = new Date(1725573600000);
+        setInterval(() => {
+            const now = new Date();
+            const diff = endDateTime - now;
+            const hours = (Math.floor(diff / 1000 / 60 / 60)).toString().padStart(2, '0');
+            const minutes = (Math.floor(diff / 1000 / 60) % 60).toString().padStart(2, '0');
+            const seconds = (Math.floor(diff / 1000) % 60).toString().padStart(2, '0');
+            el.innerHTML = `${hours}:${minutes}:${seconds}`;
+        }, 1000);
+    </script>
+    </body>
+</html>
